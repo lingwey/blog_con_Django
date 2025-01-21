@@ -1,0 +1,17 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'CSS/blog.css' %}" />
+  </head>
+  <body>
+    <div id="content">{%block content%} {%endblock%}</div>
+    <div id="slider">
+      <h2>Mi blog</h2>
+      <p>Este es mi blog</p>
+    </div>
+
+    <script src="" async defer></script>
+  </body>
+</html>

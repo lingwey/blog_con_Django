@@ -2,6 +2,11 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+#Manager personalizado
+class PublishManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status= Post.Status.PUBLICO)
+
 class Post (models.Model):
     
     class Status (models.TextChoices):
@@ -21,5 +26,10 @@ class Post (models.Model):
         ordering =['-publicacion']
         indexes = [models.Index(fields=['-publicacion'])]
     
+    objects= models.Manager()
+    #manage_perso= PublishManager()
+    
     def __str__(self):
         return self.titulo
+    
+#Post.objects
