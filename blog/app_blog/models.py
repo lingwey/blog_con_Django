@@ -8,6 +8,8 @@ class PublishManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status= Post.Status.PUBLICO)
 
+
+
 class Post (models.Model):
     
     class Status (models.TextChoices):
@@ -41,4 +43,21 @@ class Post (models.Model):
                                                  self.publicacion.day, 
                                                  self.slug
                                                  ])
+
+class Comentario(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comentarios')
+    nombre = models.CharField(max_length=80)
+    email= models.EmailField()
+    cuerpo= models.TextField()
+    creacion= models.DateTimeField(auto_now_add=True)
+    actualizacion= models.DateTimeField(auto_now=True)
+    activo= models.BooleanField(default=True)
     
+    class Meta:
+        ordering=['creacion']
+        indexes=[
+            models.Index(fields=['creacion'])
+        ]
+    
+    def __str__(self):
+        return f'comentario de {self.nombre} en {self.post}'
