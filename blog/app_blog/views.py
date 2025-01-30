@@ -51,7 +51,7 @@ def post_detail (request,id, year, month, day, post):
                              publicacion__year=year, 
                              publicacion__month=month, 
                              publicacion__day=day)
-    comentarios= post.comentarios.filter(active=True)
+    comentarios= post.comentarios.filter(activo=True)
     form= ComentariosForm()
     return render(request,'blog/post/detail.html', {'post':post, 'comentarios':comentarios, 'form':form})
 

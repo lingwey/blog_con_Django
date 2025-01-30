@@ -1,5 +1,5 @@
 <h2>agregar comentario</h2>
-<form action="{%url 'blog:post_comentario'%}" method="post">
+<form action="{%url 'blog:post_comentario' post.id%}" method="post">
     {{form.as_p}}
     {% csrf_token %}
     <p><input type="submit" value="agregar comentario"></p>
