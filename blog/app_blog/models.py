@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 #Manager personalizado
 class PublishManager(models.Manager):
@@ -24,6 +25,7 @@ class Post (models.Model):
     creacion = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.BORRADOR)
+    tagg = TaggableManager()
     
     class Meta:
         ordering =['-publicacion']

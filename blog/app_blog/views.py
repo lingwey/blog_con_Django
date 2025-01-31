@@ -6,12 +6,13 @@ from django.views.generic import ListView
 from .forms import EmailPostForm, ComentariosForm
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
+from taggit.models import Tag
 
-class PostListView(ListView):
+"""class PostListView(ListView):
     queryset=Post.manage_perso.all()
     context_object_name='posts'
     paginate_by= 2
-    template_name='blog/post/list.html'
+    template_name='blog/post/list.html'"""
     
 def post_share(request, post_id):
     post = get_object_or_404(Post, pk=post_id, status=Post.Status.PUBLICO)
@@ -30,18 +31,22 @@ def post_share(request, post_id):
         form= EmailPostForm()
     return render(request, 'blog/post/share.html',{'post':post, 'form':form, 'sent':sent})
 
-def post_list (request):
+def post_list (request, tag_slug= None):
     #usa el manage personalisado para obtener los post 
     posts_list = Post.manage_perso.all()
+    tag = None
+    if tag_slug:
+        tag= get_object_or_404(Tag, slug=tag_slug)
+        posts_list= posts_list.filter(tags__in=[tag])
     paginator = Paginator(posts_list,2)
-    pege_number= request.GET.get('page',1)
+    page_number= request.GET.get('page',1)
     try:
-        posts = paginator.page(pege_number)
+        posts = paginator.page(page_number)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     except PageNotAnInteger:
         posts= paginator.page(1) 
-    return render(request,'blog/post/list.html', {'posts': posts})
+    return render(request,'blog/post/list.html', {'posts': posts, 'tag':tag})
 
 def post_detail (request,id, year, month, day, post):
     post = get_object_or_404(Post,

@@ -2,14 +2,27 @@
 {% block title%}mi blog{%endblock %} 
 {% block content%}
   <h1>Mi blog</h1>
-
+    
+    {% if tag %}
+        <h2>post relacionado con el tag: "{{tag.name}}"</h2>
+    {% endif %}
+        
     {% for post in posts %}
       <h2>
         <a href="{{post.get_absolute_url}}">{{post.titulo}}</a>
         >
       </h2>
+      <p class='tags'>
+        
+        {% for tag in post.tagg.all %}
+            <a href="{% url 'blog:post_list_by_tag' tag.slug%}">
+                {{tag.name}}
+            </a>
+        {% endfor %}
+            
+      </p>
       <p class="date">publico {{post.publicacion}} by {{post.autor}}</p>
       {{post.body| truncatewords:30| linebreaks}}
     {% endfor %}
-    {% include 'pagination.html' with page=page_obj %}
+    {% include 'pagination.html' with page=posts %}
 {% endblock %}
