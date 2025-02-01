@@ -25,7 +25,6 @@ class Post (models.Model):
     creacion = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.BORRADOR)
-    tagg = TaggableManager()
     
     class Meta:
         ordering =['-publicacion']
@@ -33,6 +32,7 @@ class Post (models.Model):
     
     objects= models.Manager()
     manage_perso= PublishManager()
+    tags = TaggableManager()
     
     def __str__(self):
         return self.titulo
