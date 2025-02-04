@@ -7,6 +7,7 @@ from .forms import EmailPostForm, ComentariosForm
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
 from taggit.models import Tag
+from django.db.models import Count
 
 """class PostListView(ListView):
     queryset=Post.manage_perso.all()
@@ -58,7 +59,10 @@ def post_detail (request,id, year, month, day, post):
                              publicacion__day=day)
     comentarios= post.comentarios.filter(activo=True)
     form= ComentariosForm()
-    return render(request,'blog/post/detail.html', {'post':post, 'comentarios':comentarios, 'form':form})
+    posts_tags_ids= post.tags.values_list("id", flat=True)
+    similar_post = Post.manage_perso.filter(tags__in= posts_tags_ids).exclude(id=post.id)
+    similar_post = similar_post.annotate(same_tags=Count('tags')).order_by('-same_tags','-publicacion')[:4]
+    return render(request,'blog/post/detail.html', {'post':post, 'comentarios':comentarios, 'form':form, 'similar_post': similar_post})
 
 @require_POST
 def post_comentario(request, post_id):

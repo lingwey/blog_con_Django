@@ -1,4 +1,5 @@
 {% load static %}
+{% load blog_tags %}
 <!doctype html>
 <html>
   <head>
@@ -7,9 +8,13 @@
   </head>
   <body>
     <div id="content">{%block content%} {%endblock%}</div>
-    <div id="slider">
+    <div id="sidebar">
       <h2>Mi blog</h2>
-      <p>Este es mi blog</p>
+      <p>Este es mi blog
+        tengo escritos {%total_post%} posts
+      </p>
+      <h3>Ultimos posteos</h3>
+      {%show_latest_posts 3%}
     </div>
 
     <script src="" async defer></script>

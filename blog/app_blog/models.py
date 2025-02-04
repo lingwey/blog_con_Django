@@ -8,7 +8,7 @@ from taggit.managers import TaggableManager
 class PublishManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status= Post.Status.PUBLICO)
-
+        
 
 
 class Post (models.Model):
@@ -25,6 +25,7 @@ class Post (models.Model):
     creacion = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.BORRADOR)
+    tags = TaggableManager()
     
     class Meta:
         ordering =['-publicacion']
@@ -32,7 +33,6 @@ class Post (models.Model):
     
     objects= models.Manager()
     manage_perso= PublishManager()
-    tags = TaggableManager()
     
     def __str__(self):
         return self.titulo
