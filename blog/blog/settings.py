@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SITE_ID= 1
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_blog',
-    'taggit'
+    'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -77,8 +80,12 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'blog_test',
+        'USER':'blog',
+        'PASSWORD':'1234',
     }
 }
 
@@ -125,7 +132,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_HOST_USER=''
-EMAIL_HOST_PASSWORD=''
+EMAIL_HOST_USER='nachozannetti0@gmail.com'
+EMAIL_HOST_PASSWORD='jabr lwkn oyoj shou'
 EMAIL_PORT=587
 EMAIL_USE_TLS= True

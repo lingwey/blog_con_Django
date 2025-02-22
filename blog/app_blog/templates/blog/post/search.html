@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% load blog_tags %}
+
+
+{% block title %}
+   Search 
+{% endblock  %}
+
+{% block content %}
+    
+    {% if query %}
+        <h1>Post containing "{{query}}"</h1>
+        <h3>
+            
+            {% with result.count as total_results %}
+                Found {{total_results}} results{{total_results|pluralize}}
+            {% endwith %}
+        </h3>
+        
+        {% for post in result %}
+            <h4>
+                <a href="{{post.get_absolute_url}}">
+                    {{post.titulo}}
+                </a>
+            </h4>
+            {{post.cuerpo|markdown|truncatewords_html:12}}
+            {% empty %}
+            <p>no se encontro nada relacionado a la busqueda</p>
+        {% endfor %}
+             <p><a href="{% url 'blog:post_search' %}">Search again</a></p>
+    {% else %}
+        <h1>buscar por post</h1>
+        <form method= "get">
+            {{form.as_p}}
+            <input type="submit" value="Search">
+        </form>
+    {% endif %}
+        
+{% endblock  %}
+    

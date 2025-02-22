@@ -3,11 +3,12 @@ from .models import Post, Comentario
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
-from .forms import EmailPostForm, ComentariosForm
+from .forms import EmailPostForm, ComentariosForm, SearchForm
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
 from taggit.models import Tag
 from django.db.models import Count
+from django.contrib.postgres.search import SearchVector
 
 """class PostListView(ListView):
     queryset=Post.manage_perso.all()
@@ -74,4 +75,21 @@ def post_comentario(request, post_id):
         comentario.post = post
         comentario.save()
     return render(request, 'blog/post/comentario.html', {'post':post, 'form':form, 'comentario':comentario}) 
+ 
+def post_search(request):
+    form= SearchForm()
+    query= None
+    result=[]
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query= form.cleaned_data['query']
+            result= Post.manage_perso.annotate(
+                search=SearchVector('titulo', 'cuerpo')
+            ).filter(search=query)
+    return render(request, 'blog/post/search.html', 
+                  {'form': form, 
+                   'query':query,
+                   'result':result})
+             
  
