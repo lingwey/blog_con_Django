@@ -47,11 +47,11 @@ Sigue estos pasos para configurar el proyecto en tu entorno local:
 
 Dependencias
 El proyecto utiliza las siguientes librerías:
---Django
---django-taggit
---django.contrib.sitemaps
---django.contrib.postgres
---psycopg2-binary
+-**Django**
+-**django-taggit**
+-**django.contrib.sitemaps**
+-**django.contrib.postgres**
+-**psycopg2-binary**
 
 Configuración de Email
 Para habilitar la funcionalidad de compartir posts por email, configura las credenciales de tu servicio de email en settings.py:
@@ -62,19 +62,19 @@ EMAIL_PORT=587
 EMAIL_USE_TLS= True
 
 Estructura del Proyecto
---app_blog: Contiene la lógica principal de la aplicación.
---models.py: Define los modelos de la base de datos.
---views.py: Contiene las vistas de la aplicación.
---forms.py: Define los formularios utilizados en la aplicación.
---urls.py: Define las rutas de la aplicación.
---sitemaps.py: Configura los sitemaps.
---feeds.py: Configura los feeds RSS.
---admin.py: Configura la administración de los modelos.
---templatetags/blog_tags.py: Define tags y filtros personalizados.
---templates/: Contiene las plantillas HTML.
+-**app_blog**: Contiene la lógica principal de la aplicación.
+-**models.py**: Define los modelos de la base de datos.
+-**views.py**: Contiene las vistas de la aplicación.
+-**forms.py**: Define los formularios utilizados en la aplicación.
+-**urls.py**: Define las rutas de la aplicación.
+-**sitemaps.py**: Configura los sitemaps.
+-**feeds.py**: Configura los feeds RSS.
+-**admin.py**: Configura la administración de los modelos.
+-**templatetags/blog_tags.py**: Define tags y filtros personalizados.
+-**templates/**: Contiene las plantillas HTML.
 blog: Configuración del proyecto Django.
---settings.py: Configuraciones del proyecto.
---urls.py: Rutas principales del proyecto.
+-**settings.py**: Configuraciones del proyecto.
+-**urls.py**: Rutas principales del proyecto.
 
 Licencia
 Este proyecto está licenciado bajo los términos de la licencia MIT.
