@@ -63,3 +63,4 @@ class Comentario(models.Model):
     
     def __str__(self):
         return f'comentario de {self.nombre} en {self.post}'
+    
