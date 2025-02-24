@@ -45,7 +45,7 @@ Sigue estos pasos para configurar el proyecto en tu entorno local:
  ```
 
 
-Dependencias
+##Dependencias
 El proyecto utiliza las siguientes librerías:
 -**Django**
 -**django-taggit**
@@ -53,7 +53,7 @@ El proyecto utiliza las siguientes librerías:
 -**django.contrib.postgres**
 -**psycopg2-binary**
 
-Configuración de Email
+##Configuración de Email
 Para habilitar la funcionalidad de compartir posts por email, configura las credenciales de tu servicio de email en settings.py:
 EMAIL_HOST= 'smtp.gmail.com'
 EMAIL_HOST_USER='tu-email@gmail.com'
@@ -61,23 +61,18 @@ EMAIL_HOST_PASSWORD='tu-contraseña-de-app'
 EMAIL_PORT=587
 EMAIL_USE_TLS= True
 
-Estructura del Proyecto
--**app_blog**: Contiene la lógica principal de la aplicación.
--**models.py**: Define los modelos de la base de datos.
--**views.py**: Contiene las vistas de la aplicación.
--**forms.py**: Define los formularios utilizados en la aplicación.
--**urls.py**: Define las rutas de la aplicación.
--**sitemaps.py**: Configura los sitemaps.
--**feeds.py**: Configura los feeds RSS.
--**admin.py**: Configura la administración de los modelos.
--**templatetags/blog_tags.py**: Define tags y filtros personalizados.
--**templates/**: Contiene las plantillas HTML.
-blog: Configuración del proyecto Django.
--**settings.py**: Configuraciones del proyecto.
--**urls.py**: Rutas principales del proyecto.
+##Estructura del Proyecto
+- **app_blog**: Contiene la lógica principal de la aplicación.
+- **models.py**: Define los modelos de la base de datos.
+- **views.py**: Contiene las vistas de la aplicación.
+- **forms.py**: Define los formularios utilizados en la aplicación.
+- **urls.py**: Define las rutas de la aplicación.
+- **sitemaps.py**: Configura los sitemaps.
+- **feeds.py**: Configura los feeds RSS.
+- **admin.py**: Configura la administración de los modelos.
+- **templatetags/blog_tags.py**: Define tags y filtros personalizados.
+- **templates/**: Contiene las plantillas HTML.
 
-Licencia
-Este proyecto está licenciado bajo los términos de la licencia MIT.
-
-Contribución
-Las contribuciones son bienvenidas. Por favor, abre un issue o un pull request para discutir cualquier cambio importante.
+**blog**: Configuración del proyecto Django.
+- **settings.py**: Configuraciones del proyecto.
+- **urls.py**: Rutas principales del proyecto.
