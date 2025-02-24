@@ -16,27 +16,33 @@ Este es un proyecto de blog creado con Django. El proyecto incluye funcionalidad
 Sigue estos pasos para configurar el proyecto en tu entorno local:
 
 1. Clonar el repositorio:
-     ```bash
+   ```bash
      git clone https://github.com/lingwey/blog_con_Django
+   ```
 2.Crear un entorno virtual:
-    ```bash
-    python -m venv env
-    source env/bin/activate  # En Windows: env\Scripts\activate
-3.Instalar las dependencias:
   ```bash
-    pip install -r requirements.txt
+     python -m venv env
+     source env/bin/activate  # En Windows: env\Scripts\activate
+  ```
+3.Instalar las dependencias:
+```bash
+        pip install -r requirements.txt
+```
 4.Configurar la base de datos:
   Edita el archivo settings.py y configura la base de datos PostgreSQL.
 5.Aplicar las migraciones:
   ```bash
   python manage.py makemigrations
   python manage.py migrate
+  ```
 6.Crear un superusuario:
   ```bash
   python manage.py createsuperuser
+ ```
 7.Ejecutar el servidor de desarrollo:
   ```bash
   python manage.py runserver
+ ```
 
 
 Dependencias
