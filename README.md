@@ -55,11 +55,11 @@ El proyecto utiliza las siguientes librerías:
 
 ## Configuración de Email
 Para habilitar la funcionalidad de compartir posts por email, configura las credenciales de tu servicio de email en settings.py:
-EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_HOST_USER='tu-email@gmail.com'
-EMAIL_HOST_PASSWORD='tu-contraseña-de-app'
-EMAIL_PORT=587
-EMAIL_USE_TLS= True
+- EMAIL_HOST= 'smtp.gmail.com'
+- EMAIL_HOST_USER='tu-email@gmail.com'
+- EMAIL_HOST_PASSWORD='tu-contraseña-de-app'
+- EMAIL_PORT=587
+- EMAIL_USE_TLS= True
 
 ## Estructura del Proyecto
 - **app_blog**: Contiene la lógica principal de la aplicación.
