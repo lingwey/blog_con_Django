@@ -77,3 +77,4 @@ Para habilitar la funcionalidad de compartir posts por email, configura las cred
 **blog**: Configuración del proyecto Django.
 - **settings.py**: Configuraciones del proyecto.
 - **urls.py**: Rutas principales del proyecto.
+
